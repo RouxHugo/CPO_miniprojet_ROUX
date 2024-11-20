@@ -14,14 +14,11 @@ public class LightOff_ROUX_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CelluleLumineuse cellule = new CelluleLumineuse();
+        // Création d'une grille 3x3
+        GrilleDeCellules grille = new GrilleDeCellules(3, 3);
 
-        System.out.println(cellule); // Affiche : CelluleLumineuse [estAllumee=false]
 
-        cellule.allumer();
-        System.out.println(cellule); // Affiche : CelluleLumineuse [estAllumee=true]
-
-        cellule.eteindre();
-        System.out.println(cellule); // Affiche : CelluleLumineuse [estAllumee=false]
+        // Affichage de la grille
+        System.out.println(grille);
     }
-}
+    }
