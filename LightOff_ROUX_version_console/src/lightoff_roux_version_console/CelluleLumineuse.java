@@ -31,8 +31,12 @@ public class CelluleLumineuse {
         this.estAllumee = false;
     }
 
+    public boolean estAllumee() {
+        return estAllumee;
+    }
+
     @Override
     public String toString() {
-        return "CelluleLumineuse [estAllumee=" + estAllumee + "]";
+        return estAllumee ? "O" : ".";
     }
 }
