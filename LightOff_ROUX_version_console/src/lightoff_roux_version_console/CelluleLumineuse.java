@@ -16,27 +16,37 @@ package lightoff_roux_version_console;
  * Classe représentant une cellule lumineuse.
  */
 public class CelluleLumineuse {
+    // Attribut : état de la cellule (true = allumée, false = éteinte)
+    private boolean etat;
 
-    private boolean estAllumee;
-
+    // Constructeur par défaut : initialise la cellule à "éteinte"
     public CelluleLumineuse() {
-        this.estAllumee = false;
+        this.etat = false;
     }
 
-    public void allumer() {
-        this.estAllumee = true;
+    // Méthode pour activer la cellule (inverser son état)
+    public void activerCellule() {
+        this.etat = !this.etat;
     }
 
-    public void eteindre() {
-        this.estAllumee = false;
+    // Méthode pour éteindre la cellule
+    public void eteindreCellule() {
+        this.etat = false;
     }
 
-    public boolean estAllumee() {
-        return estAllumee;
+    // Méthode pour vérifier si la cellule est éteinte
+    public boolean estEteint() {
+        return !this.etat;
     }
 
+    // Méthode pour obtenir l'état de la cellule
+    public boolean getEtat() {
+        return this.etat;
+    }
+
+    // Redéfinition de la méthode toString pour représenter l'état de la cellule
     @Override
     public String toString() {
-        return estAllumee ? "O" : ".";
+        return etat ? "X" : "O"; // "X" pour allumée, "O" pour éteinte
     }
 }
