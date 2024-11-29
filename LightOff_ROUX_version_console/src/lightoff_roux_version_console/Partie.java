@@ -48,6 +48,7 @@ public class Partie {
        
 
         while (continuer) {
+            
             System.out.println("Entrez votre coup :");
             System.out.println("1. Activer une ligne");
             System.out.println("2. Activer une colonne");

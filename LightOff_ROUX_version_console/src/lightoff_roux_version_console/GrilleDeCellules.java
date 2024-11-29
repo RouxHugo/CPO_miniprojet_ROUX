@@ -37,25 +37,25 @@ public class GrilleDeCellules {
 
     public void activerLigneDeCellules(int idLigne) {
         for (int j = 0; j < nbColonnes; j++) {
-            grille[idLigne][j].allumer();
+            grille[idLigne][j].activerCellule();
         }
     }
 
     public void activerColonneDeCellules(int idColonne) {
         for (int i = 0; i < nbLignes; i++) {
-            grille[i][idColonne].allumer();
+            grille[i][idColonne].activerCellule();
         }
     }
 
     public void activerDiagonaleDescendante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
-            grille[i][i].allumer();
+            grille[i][i].activerCellule();
         }
     }
 
     public void activerDiagonaleMontante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
-            grille[nbLignes - 1 - i][i].allumer();
+            grille[nbLignes - 1 - i][i].activerCellule();
         }
     }
 
@@ -97,12 +97,12 @@ public class GrilleDeCellules {
     public String toString() {
         StringBuilder affichage = new StringBuilder();
 
-        for (int i = 0; i < nbLignes; i++) {
+        for (int i = 0; i < nbLignes; i++) {    
             for (int j = 0; j < nbColonnes; j++) {
-                if (grille[i][j].estAllumee()) {
-                    affichage.append("O ");
+                if (grille[i][j].estEteint()) {
+                    affichage.append("X");
                 } else {
-                    affichage.append(". ");
+                    affichage.append("0");
                 }
             }
             affichage.append("\n");
