@@ -16,6 +16,13 @@ public class GrilleDeCellules {
     private int nbLignes;
     private int nbColonnes;
 
+        public void eteindreToutesLesCellules() {
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                grille[i][j].eteindreCellule();
+            }
+        }
+    }
     public GrilleDeCellules(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
@@ -59,15 +66,11 @@ public class GrilleDeCellules {
         }
     }
 
-    public void melangerMatriceAleatoirement(int nbTours) {
+
+    public void MelangeAleatoire(int nbTours) {
+        eteindreToutesLesCellules();
         Random rand = new Random();
         for (int i = 0; i < nbTours; i++) {
-            activerLigneColonneOuDiagonaleAleatoire();
-        }
-    }
-
-    public void activerLigneColonneOuDiagonaleAleatoire() {
-        Random rand = new Random();
         int choix = rand.nextInt(4); // 0: ligne, 1: colonne, 2: diagonale descendante, 3: diagonale montante
         switch (choix) {
             case 0:
@@ -83,6 +86,7 @@ public class GrilleDeCellules {
                 activerDiagonaleMontante();
                 break;
         }
+    }
     }
 
     public int getNbLignes() {
