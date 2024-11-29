@@ -29,7 +29,7 @@ public class Partie {
         // Mélanger la grille avec des actions aléatoires
         for (int i = 0; i < nbMélanges; i++) {
             // Choisir une action aléatoire parmi ligne, colonne ou diagonale
-            grille.activerLigneColonneOuDiagonaleAleatoire(); 
+            grille.MelangeAleatoire(nbMélanges); 
         }
 
         // Afficher la grille après mélange
@@ -40,10 +40,6 @@ public class Partie {
     // Lancer la partie avec des actions de l'utilisateur
 
     public void lancerPartie() { 
-        Random ran = new Random();
-         int nbTours = ran.nextInt(16) + 5; // Cela donne un nombre aléatoire entre 5 et 20
-                System.out.println("Nombre de tours de mélange : " + nbTours);
-                grille.melangerMatriceAleatoirement(nbTours);
         boolean continuer = true;
        
 
