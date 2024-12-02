@@ -60,6 +60,10 @@ public class interfaceprincipale extends javax.swing.JFrame {
             }
         }
     }
+    public void initialiserPartie() { 
+grille.eteindreToutesLesCellules(); 
+grille.MelangeAleatoire(10); 
+} 
 
     /**
      * This method is called from within the constructor to initialize the form.
