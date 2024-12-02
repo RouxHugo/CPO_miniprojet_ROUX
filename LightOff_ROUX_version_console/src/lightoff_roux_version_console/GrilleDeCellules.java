@@ -23,6 +23,21 @@ public class GrilleDeCellules {
             }
         }
     }
+        
+        public boolean cellulesToutesEteintes() {
+    // Parcours de chaque cellule de la grille
+    for (int i = 0; i < nbLignes; i++) {
+        for (int j = 0; j < nbColonnes; j++) {
+            // Si une cellule est allumée, retourne false
+            if (!grille[i][j].estEteint()) {
+                return false;
+            }
+        }
+    }
+    // Si aucune cellule n'est allumée, retourne true
+    return true;
+}
+
     public GrilleDeCellules(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
@@ -97,21 +112,23 @@ public class GrilleDeCellules {
         return nbColonnes;
     }
 
-    @Override
-    public String toString() {
+@Override
+public String toString() {
         StringBuilder affichage = new StringBuilder();
-
-        for (int i = 0; i < nbLignes; i++) {    
-            for (int j = 0; j < nbColonnes; j++) {
-                if (grille[i][j].estEteint()) {
-                    affichage.append("X");
-                } else {
-                    affichage.append("0");
-                }
-            }
-            affichage.append("\n");
+        // Affichage des indices de colonnes
+        affichage.append("   ");
+        for (int j = 0; j < nbColonnes; j++) {
+            affichage.append("| ").append(j).append(" ");
         }
-
+        affichage.append("|\n").append("   ").append("-".repeat(nbColonnes * 4)).append("\n");
+        // Affichage des cellules avec les indices de lignes
+        for (int i = 0; i < nbLignes; i++) {
+            affichage.append(i).append(" | "); // Indice de ligne
+            for (int j = 0; j < nbColonnes; j++) {
+                affichage.append(grille[i][j].toString()).append(" | ");
+            }
+            affichage.append("\n").append("   ").append("-".repeat(nbColonnes * 4)).append("\n");
+        }
         return affichage.toString();
     }
 }
