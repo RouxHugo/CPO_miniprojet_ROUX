@@ -12,14 +12,17 @@ package lightoff_roux_version_console;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Partie {
 
     private GrilleDeCellules grille;
     private Scanner scanner;
-
+ private int nbCoups;
+ 
     public Partie(int nbLignes, int nbColonnes) {
         this.grille = new GrilleDeCellules(nbLignes, nbColonnes);
         this.scanner = new Scanner(System.in);
+        nbCoups = 0;
     }
 
    public void initialiserPartie() {
@@ -27,13 +30,11 @@ public class Partie {
         int nbMélanges = rand.nextInt(10) + 5; // Par exemple, entre 5 et 15 actions aléatoires
 
         // Mélanger la grille avec des actions aléatoires
-        for (int i = 0; i < nbMélanges; i++) {
-            // Choisir une action aléatoire parmi ligne, colonne ou diagonale
+        
             grille.MelangeAleatoire(nbMélanges); 
-        }
 
         // Afficher la grille après mélange
-        System.out.println("Grille initiale mélangée : ");
+        System.out.println("Grille initiale mélangée : "+ nbMélanges);
         System.out.println(grille.toString());
     }
 
@@ -44,7 +45,7 @@ public class Partie {
        
 
         while (continuer) {
-            
+            System.out.println("nombre de coup = " +nbCoups);
             System.out.println("Entrez votre coup :");
             System.out.println("1. Activer une ligne");
             System.out.println("2. Activer une colonne");
@@ -59,17 +60,21 @@ public class Partie {
                     System.out.print("Entrez le numéro de la ligne (0-" + (grille.getNbLignes() - 1) + ") : ");
                     int ligne = scanner.nextInt();
                     grille.activerLigneDeCellules(ligne);
+                    nbCoups++;
                     break;
                 case 2:
                     System.out.print("Entrez le numéro de la colonne (0-" + (grille.getNbColonnes() - 1) + ") : ");
                     int colonne = scanner.nextInt();
                     grille.activerColonneDeCellules(colonne);
+                    nbCoups++;
                     break;
                 case 3:
                     grille.activerDiagonaleDescendante();
+                    nbCoups++;
                     break;
                 case 4:
                     grille.activerDiagonaleMontante();
+                    nbCoups++;
                     break;
                     
                 case 0:
