@@ -23,6 +23,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
         int Nbcolonne = 7;
         this.grille = new GrilleDeCellules(Nbligne,Nbcolonne);
         
+        
         for (int i = 0; i < 7; i++) {
             JButton button = new JButton(""+i);
             jPanel1.add(button);
@@ -54,9 +55,8 @@ public class interfaceprincipale extends javax.swing.JFrame {
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
-                JButton button = new JButton(""+j);
-
-                jPanel6.add(button);
+                CelluleGraphique bouton_cellule = new CelluleGraphique( grille.grille[i][j], 36,36);
+                jPanel6.add(bouton_cellule);
             }
         }
     }
