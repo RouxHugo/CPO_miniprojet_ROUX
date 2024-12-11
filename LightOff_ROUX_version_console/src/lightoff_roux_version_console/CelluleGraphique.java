@@ -25,4 +25,11 @@ public class CelluleGraphique extends JButton {
         this.longueur = longueur;
         
     }
+    // Methode gérant le dessin de la cellule  
+@Override 
+    protected void paintComponent(Graphics g) { 
+    super.paintComponent(g);  
+    this.setText(celluleLumineuseAssociee.toString()); 
+}
+    
 }
