@@ -5,6 +5,7 @@
 package lightoff_roux_version_console;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -69,12 +70,37 @@ public class interfaceprincipale extends javax.swing.JFrame {
         }
 
         for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                CelluleGraphique bouton_cellule = new CelluleGraphique( grille.grille[i][j], 36,36);
-                jPanel6.add(bouton_cellule);
+    for (int j = 0; j < 7; j++) {
+        JButton button = new JButton();
+        // Configure la taille et l'apparence du bouton
+        button.setPreferredSize(new java.awt.Dimension(50, 50));
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+
+        // Mise à jour de la couleur initiale
+        button.setBackground(grille.grille[i][j].estEteint() ? Color.YELLOW : Color.BLACK);
+
+        // Action lors du clic sur une cellule
+        final int ligne = i;
+        final int colonne = j;
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 grille.grille[ligne][colonne].activerCellule();
+                Nbcoups++;
+                jLabel1.setText("Nombre de coups : " + Nbcoups);
+                victoire();
+
+                // Mise à jour de la couleur après clic
+                button.setBackground(grille.grille[ligne][colonne].estEteint() ? Color.YELLOW : Color.BLACK);
+                repaint();
             }
-        }
-        
+        });
+
+        // Ajout du bouton au panneau
+        jPanel6.add(button);
+    }
+}
+  
     }
     public void initialiserPartie() { 
 grille.eteindreToutesLesCellules(); 
