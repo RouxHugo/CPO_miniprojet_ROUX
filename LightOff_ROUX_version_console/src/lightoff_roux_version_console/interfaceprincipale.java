@@ -7,6 +7,7 @@ package lightoff_roux_version_console;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -27,6 +28,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
         int Nbligne = 7;
         int Nbcolonne = 7;
         this.grille = new GrilleDeCellules(Nbligne,Nbcolonne);
+        initialiserPartie();
         
         jLabel1.setText("Nombre de coups : "+Nbcoups);
         repaint();
@@ -42,6 +44,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
                     grille.activerColonneDeCellules(colonne);
                     Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    victoire();
                     repaint(); // Re-dessine la grille pour refléter les changements
                 }
             });
@@ -58,6 +61,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
                     grille.activerLigneDeCellules(ligne);
                     Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    victoire();
                     repaint(); // Re-dessine la grille pour refléter les changements
                 }
             });
@@ -78,8 +82,39 @@ grille.MelangeAleatoire(10);
 } 
 
     public void victoire(){
-        
+        if (grille.cellulesToutesEteintes()== true) {
+            // Crée un tableau pour les boutons
+        Object[] options = {"Relancer", "Quitter"};
+
+        // Affiche une boîte de dialogue avec deux boutons
+        int choix = JOptionPane.showOptionDialog(
+            null, // Fenêtre parente (null = centré sur l'écran)
+            "Félicitations ! Vous avez gagné !\nQue voulez-vous faire ?", // Message
+            "Victoire !", // Titre de la fenêtre
+            JOptionPane.YES_NO_OPTION, // Type de boutons
+            JOptionPane.INFORMATION_MESSAGE, // Icône (info)
+            null, // Icône personnalisée (null pour l'icône par défaut)
+            options, // Texte des boutons
+            options[0] // Valeur par défaut (Relancer)
+        );
+
+        // Traite le choix de l'utilisateur
+        if (choix == JOptionPane.YES_OPTION) {
+            // Action pour relancer le jeu
+            System.out.println("Le jeu est relancé !");
+            initialiserPartie();
+        } else if (choix == JOptionPane.NO_OPTION) {
+            // Action pour quitter le jeu
+            System.out.println("Le jeu est terminé. Au revoir !");
+            System.exit(0); // Ferme l'application
+        } else {
+            // Si l'utilisateur ferme la fenêtre
+            System.out.println("Aucune action sélectionnée. Quitter par défaut.");
+            System.exit(0);
+        }
     }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,7 +149,7 @@ grille.MelangeAleatoire(10);
         jPanel6.setLayout(new java.awt.GridLayout(7, 7));
 
         jPanel3.setBackground(new java.awt.Color(242, 0, 242));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton2.setText("diagonale montante");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +167,7 @@ grille.MelangeAleatoire(10);
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -144,7 +179,7 @@ grille.MelangeAleatoire(10);
         );
 
         jPanel7.setBackground(new java.awt.Color(242, 0, 242));
-        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("diagonale descendante");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,13 +202,10 @@ grille.MelangeAleatoire(10);
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 147, Short.MAX_VALUE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,6 +246,7 @@ grille.MelangeAleatoire(10);
         grille.activerDiagonaleDescendante();
         Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    victoire();
                     repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -221,6 +254,7 @@ grille.MelangeAleatoire(10);
         grille.activerDiagonaleMontante();
         Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    victoire();
                     repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
