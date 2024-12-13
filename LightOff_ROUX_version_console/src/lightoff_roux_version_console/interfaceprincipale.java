@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
  */
 public class interfaceprincipale extends javax.swing.JFrame {
     GrilleDeCellules grille;
-        int Nbcoups;
+    int Nbcoups = 0;
 
 
     /**
@@ -28,7 +28,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
         int Nbcolonne = 7;
         this.grille = new GrilleDeCellules(Nbligne,Nbcolonne);
         
-        jLabel1.setText("Nombre de coups : ");
+        jLabel1.setText("Nombre de coups : "+Nbcoups);
         repaint();
         
         for (int i = 0; i < 7; i++) {
@@ -40,6 +40,8 @@ public class interfaceprincipale extends javax.swing.JFrame {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     // Lorsque l'on clique sur un bouton, on active la colonne correspondante
                     grille.activerColonneDeCellules(colonne);
+                    Nbcoups ++ ;
+                    jLabel1.setText("Nombre de coups : "+Nbcoups);
                     repaint(); // Re-dessine la grille pour refléter les changements
                 }
             });
@@ -54,6 +56,8 @@ public class interfaceprincipale extends javax.swing.JFrame {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     // Lorsque l'on clique sur un bouton, on active la ligne correspondante
                     grille.activerLigneDeCellules(ligne);
+                    Nbcoups ++ ;
+                    jLabel1.setText("Nombre de coups : "+Nbcoups);
                     repaint(); // Re-dessine la grille pour refléter les changements
                 }
             });
@@ -208,12 +212,16 @@ grille.MelangeAleatoire(10);
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         grille.activerDiagonaleDescendante();
-        repaint();
+        Nbcoups ++ ;
+                    jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         grille.activerDiagonaleMontante();
-        repaint();
+        Nbcoups ++ ;
+                    jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
