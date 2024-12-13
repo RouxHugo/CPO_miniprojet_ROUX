@@ -89,7 +89,7 @@ grille.MelangeAleatoire(10);
         // Affiche une boîte de dialogue avec deux boutons
         int choix = JOptionPane.showOptionDialog(
             null, // Fenêtre parente (null = centré sur l'écran)
-            "Félicitations ! Vous avez gagné !\nQue voulez-vous faire ?", // Message
+            "Félicitations ! Vous avez gagné en "+ Nbcoups + " coups ! \nQue voulez-vous faire ?", // Message
             "Victoire !", // Titre de la fenêtre
             JOptionPane.YES_NO_OPTION, // Type de boutons
             JOptionPane.INFORMATION_MESSAGE, // Icône (info)
