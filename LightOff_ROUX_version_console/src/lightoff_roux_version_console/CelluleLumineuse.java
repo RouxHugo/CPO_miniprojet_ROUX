@@ -17,7 +17,7 @@ package lightoff_roux_version_console;
  */
 public class CelluleLumineuse {
     // Attribut : état de la cellule (true = allumée, false = éteinte)
-    private boolean etat;
+    public boolean etat;
 
     // Constructeur par défaut : initialise la cellule à "éteinte"
     public CelluleLumineuse() {

@@ -26,10 +26,21 @@ public class CelluleGraphique extends JButton {
         
     }
     // Methode gérant le dessin de la cellule  
-@Override 
-    protected void paintComponent(Graphics g) { 
-    super.paintComponent(g);  
-    this.setText(celluleLumineuseAssociee.toString()); 
-}
+@Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
     
+    // Changement de couleur selon l'état de la cellule
+    if (celluleLumineuseAssociee.etat) { // Allumée
+        this.setBackground(Color.YELLOW); // Jaune pour "allumé"
+        this.setForeground(Color.BLACK);  // Texte noir pour contraste
+    } else { // Éteinte
+        this.setBackground(Color.BLACK); // Noir pour "éteint"
+        this.setForeground(Color.WHITE); // Texte blanc pour contraste
+    }
+    
+    this.setText(celluleLumineuseAssociee.toString()); // Mettre à jour le texte
+    this.setOpaque(true); // Assure que la couleur de fond est visible
+    this.setBorderPainted(false); // Supprime la bordure
+}
 }
