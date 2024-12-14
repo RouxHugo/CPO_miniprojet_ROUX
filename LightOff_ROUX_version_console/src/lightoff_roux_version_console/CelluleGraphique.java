@@ -39,7 +39,7 @@ protected void paintComponent(Graphics g) {
         this.setForeground(Color.WHITE); // Texte blanc pour contraste
     }
     
-    this.setText(celluleLumineuseAssociee.toString()); // Mettre à jour le texte
+    this.setText(""); // Retire le texte
     this.setOpaque(true); // Assure que la couleur de fond est visible
     this.setBorderPainted(false); // Supprime la bordure
 }
