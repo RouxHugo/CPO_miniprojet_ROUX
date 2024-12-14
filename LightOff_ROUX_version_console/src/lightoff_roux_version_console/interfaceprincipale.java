@@ -35,7 +35,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
         repaint();
         
         for (int i = 0; i < 7; i++) {
-            JButton button = new JButton(""+i);
+            JButton button = new JButton("");
             jPanel1.add(button);
 
             final int colonne = i; // capture de la ligne ou colonne correspondante
@@ -52,7 +52,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
         }
 
         for (int j = 0; j < 7; j++) {
-            JButton button = new JButton(""+j);
+            JButton button = new JButton("");
             jPanel5.add(button);
 
             final int ligne = j; // capture de la colonne correspondante
@@ -143,19 +143,15 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        jPanel1.setBackground(new java.awt.Color(242, 242, 2));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel5.setBackground(new java.awt.Color(242, 242, 24));
         jPanel5.setLayout(new java.awt.GridLayout(0, 1));
 
-        jPanel6.setBackground(new java.awt.Color(242, 2, 242));
         jPanel6.setLayout(new java.awt.GridLayout(7, 7));
 
-        jPanel3.setBackground(new java.awt.Color(242, 0, 242));
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton2.setText("diagonale montante");
+        jButton2.setText("diagonale montante ↗");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -182,10 +178,9 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        jPanel7.setBackground(new java.awt.Color(242, 0, 242));
         jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("diagonale descendante");
+        jButton1.setText("diagonale descendante ↘");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
