@@ -73,6 +73,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
             for (int j = 0; j < 7; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique( grille.grille[i][j], 36,36);
                 jPanel6.add(bouton_cellule);
+
     }
 }
   
@@ -80,6 +81,8 @@ public class interfaceprincipale extends javax.swing.JFrame {
     public void initialiserPartie() { 
 grille.eteindreToutesLesCellules(); 
 grille.MelangeAleatoire(10); 
+Nbcoups = 0;
+jLabel1.setText("Nombre de coups : "+Nbcoups);
 } 
 
     public void victoire(){
