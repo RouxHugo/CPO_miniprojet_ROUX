@@ -19,14 +19,17 @@ public class interfaceprincipale extends javax.swing.JFrame {
     GrilleDeCellules grille;
     int Nbcoups = 0;
 int Nbligne ;
-        
+  int coup;
+  
 
     /**
      * Creates new form interfaceprincipale
      */
-    public interfaceprincipale(int nb) {
+    public interfaceprincipale(int nb, int NbCoupsMax) {
         Nbligne = nb;
+        coup = NbCoupsMax;
         initComponents();
+        
         
         int Nbcolonne = Nbligne;
         this.grille = new GrilleDeCellules(Nbligne,Nbcolonne);
@@ -49,6 +52,7 @@ int Nbligne ;
                                         repaint(); // Re-dessine la grille pour refléter les changements
         
                     victoire();
+                    coupatteint();
                 }
             });
         }
@@ -66,6 +70,7 @@ int Nbligne ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
                     repaint();
                     victoire();
+                    coupatteint();
                      // Re-dessine la grille pour refléter les changements
                 }
             });
@@ -81,6 +86,33 @@ int Nbligne ;
 }
   
     }
+    public void coupatteint() {
+    if (Nbcoups == coup) { // Vérifie si le nombre de coups dépasse ou atteint la limite
+        // Affiche un message à l'utilisateur
+        int choix = JOptionPane.showOptionDialog(
+            this,
+            "Vous avez atteint le nombre maximum de " + coup + " coups.\nVous avez perdu !",
+            "Défaite",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.ERROR_MESSAGE,
+            null,
+            new Object[]{"Relancer", "Quitter"},
+            "Relancer"
+        );
+
+        // Traite le choix de l'utilisateur
+        if (choix == JOptionPane.YES_OPTION) {
+            // Relance le jeu
+            initialiserPartie();
+            repaint(); 
+        } else {
+            // Quitte l'application
+            dispose();
+            new MenuPrincipal().setVisible(true);
+        }
+    }
+}
+
     public void initialiserPartie() { 
 grille.eteindreToutesLesCellules(); 
 grille.MelangeAleatoire(10); 
@@ -245,6 +277,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
         Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
                     victoire();
+                    coupatteint();
                     repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -253,6 +286,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
         Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
                     victoire();
+                    coupatteint();
                     repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -293,7 +327,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfaceprincipale(7).setVisible(true);
+                new interfaceprincipale(7,7).setVisible(true);
             }
         });
     }
