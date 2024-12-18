@@ -45,8 +45,9 @@ public class interfaceprincipale extends javax.swing.JFrame {
                     grille.activerColonneDeCellules(colonne);
                     Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                                        repaint(); // Re-dessine la grille pour refléter les changements
+        
                     victoire();
-                    repaint(); // Re-dessine la grille pour refléter les changements
                 }
             });
         }
@@ -62,8 +63,9 @@ public class interfaceprincipale extends javax.swing.JFrame {
                     grille.activerLigneDeCellules(ligne);
                     Nbcoups ++ ;
                     jLabel1.setText("Nombre de coups : "+Nbcoups);
+                    repaint();
                     victoire();
-                    repaint(); // Re-dessine la grille pour refléter les changements
+                     // Re-dessine la grille pour refléter les changements
                 }
             });
             
