@@ -109,6 +109,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
             // Action pour relancer le jeu
             System.out.println("Le jeu est relancé !");
             initialiserPartie();
+             repaint(); 
         } else if (choix == JOptionPane.NO_OPTION) {
             // Action pour quitter le jeu
             System.out.println("Le jeu est terminé. Au revoir !");
