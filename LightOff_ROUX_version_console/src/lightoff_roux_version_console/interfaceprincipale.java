@@ -12,7 +12,10 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * Cette classe représente l'interface principale du jeu "Light Off" avec une grille de cellules.
+ * Elle gère l'affichage du jeu, les actions des joueurs et les conditions de victoire/défaite.
+ * La classe hérite de JFrame pour permettre l'affichage dans une fenêtre graphique.
+ * 
  * @author hugor
  */
 public class interfaceprincipale extends javax.swing.JFrame {
@@ -23,7 +26,11 @@ int Nbligne ;
   
 
     /**
-     * Creates new form interfaceprincipale
+     * Constructeur de l'interface principale.
+     * Initialiser la grille de jeu et l'affichage initial.
+     * 
+     * @param nb Le nombre de lignes et de colonnes de la grille de jeu.
+     * @param NbCoupsMax Le nombre maximal de coups autorisés.
      */
     public interfaceprincipale(int nb, int NbCoupsMax) {
         Nbligne = nb;
@@ -86,6 +93,10 @@ int Nbligne ;
 }
   
     }
+    /**
+     * Cette méthode est appelée lorsque le nombre maximal de coups est atteint.
+     * Elle affiche une fenêtre de dialogue pour permettre au joueur de relancer ou quitter le jeu.
+     */
     public void coupatteint() {
     if (Nbcoups == coup) { // Vérifie si le nombre de coups dépasse ou atteint la limite
         // Affiche un message à l'utilisateur
@@ -113,12 +124,21 @@ int Nbligne ;
     }
 }
 
+
+    /**
+     * Initialiser une nouvelle partie avec une grille mélangée et le compteur de coups réinitialisé.
+     */
     public void initialiserPartie() { 
 grille.eteindreToutesLesCellules(); 
 grille.MelangeAleatoire(10); 
 Nbcoups = 0;
 jLabel1.setText("Nombre de coups : "+Nbcoups);
 } 
+
+    /**
+     * Vérifie si le joueur a gagné la partie.
+     * Si toutes les cellules sont éteintes, un message de victoire est affiché.
+     */
 
     public void victoire(){
         if (grille.cellulesToutesEteintes()== true) {
@@ -271,7 +291,12 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Méthode appelée lorsque le bouton "diagonale descendante" est cliqué.
+     * Elle active la diagonale descendante dans la grille.
+     * 
+     * @param evt L'événement de clic sur le bouton.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         grille.activerDiagonaleDescendante();
         Nbcoups ++ ;
@@ -280,7 +305,12 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
                     coupatteint();
                     repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+     /**
+     * Méthode appelée lorsque le bouton "diagonale montante" est cliqué.
+     * Elle active la diagonale montante dans la grille.
+     * 
+     * @param evt L'événement de clic sur le bouton.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         grille.activerDiagonaleMontante();
         Nbcoups ++ ;
@@ -289,7 +319,12 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
                     coupatteint();
                     repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+       /**
+     * Méthode appelée lorsque le bouton "retour au Menu" est cliqué.
+     * Elle ferme l'interface actuelle et retourne au menu principal.
+     * 
+     * @param evt L'événement de clic sur le bouton.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Ferme l'interface de jeu et retourne au menu principal
         dispose(); // Ferme la fenêtre actuelle
@@ -298,7 +333,10 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Le point d'entrée principal de l'application.
+     * Lance l'interface principale avec des paramètres de jeu par défaut.
+     * 
+     * @param args Les arguments de la ligne de commande.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

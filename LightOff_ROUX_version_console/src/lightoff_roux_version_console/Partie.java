@@ -4,48 +4,64 @@
  */
 package lightoff_roux_version_console;
 
-/**
- *
- * @author hugor
- */
-
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * Classe représentant une partie du jeu "Light Off".
+ * Elle gère la création de la grille, le mélange initial des cellules, 
+ * ainsi que les actions effectuées par le joueur pendant la partie.
+ * 
+ * @author hugor
+ */
 public class Partie {
 
+    // Attributs représentant la grille de jeu et le scanner pour la saisie de l'utilisateur
     private GrilleDeCellules grille;
     private Scanner scanner;
- private int nbCoups;
- 
+    private int nbCoups;
+
+    /**
+     * Constructeur de la classe Partie.
+     * Initialise la grille de jeu avec le nombre de lignes et de colonnes spécifiés
+     * et prépare le scanner pour la saisie des actions du joueur.
+     * 
+     * @param nbLignes Le nombre de lignes de la grille de jeu
+     * @param nbColonnes Le nombre de colonnes de la grille de jeu
+     */
     public Partie(int nbLignes, int nbColonnes) {
         this.grille = new GrilleDeCellules(nbLignes, nbColonnes);
         this.scanner = new Scanner(System.in);
         nbCoups = 0;
     }
 
-   public void initialiserPartie() {
+    /**
+     * Méthode pour initialiser la partie avec un mélange aléatoire des cellules.
+     * Le nombre d'actions aléatoires est compris entre 5 et 15.
+     */
+    public void initialiserPartie() {
         Random rand = new Random();
         int nbMélanges = rand.nextInt(10) + 5; // Par exemple, entre 5 et 15 actions aléatoires
 
-        // Mélanger la grille avec des actions aléatoires
-        
-            grille.MelangeAleatoire(nbMélanges); 
+        // Mélange la grille avec des actions aléatoires
+        grille.MelangeAleatoire(nbMélanges); 
 
-        // Afficher la grille après mélange
+        // Affiche la grille après mélange
         System.out.println("Grille initiale mélangée : "+ nbMélanges);
         System.out.println(grille.toString());
     }
 
-    // Lancer la partie avec des actions de l'utilisateur
-
+    /**
+     * Méthode principale qui lance la partie.
+     * Elle permet à l'utilisateur de choisir des actions pour modifier l'état de la grille.
+     * La partie continue jusqu'à ce que l'utilisateur choisisse de quitter.
+     */
     public void lancerPartie() { 
         boolean continuer = true;
-       
 
         while (continuer) {
-            System.out.println("nombre de coup = " +nbCoups);
+            // Affichage du nombre de coups et des options du joueur
+            System.out.println("nombre de coup = " + nbCoups);
             System.out.println("Entrez votre coup :");
             System.out.println("1. Activer une ligne");
             System.out.println("2. Activer une colonne");
@@ -53,8 +69,10 @@ public class Partie {
             System.out.println("4. Activer une diagonale montante");
             System.out.println("0. Quitter");
 
+            // Lecture du choix de l'utilisateur
             int choix = scanner.nextInt();
 
+            // Traitement du choix
             switch (choix) {
                 case 1:
                     System.out.print("Entrez le numéro de la ligne (0-" + (grille.getNbLignes() - 1) + ") : ");
@@ -85,6 +103,7 @@ public class Partie {
                     System.out.println("Choix invalide. Réessayez.");
             }
 
+            // Affiche l'état de la grille après chaque action, sauf si l'utilisateur a quitté
             if (continuer) {
                 System.out.println("État actuel de la grille :");
                 System.out.println(grille);
