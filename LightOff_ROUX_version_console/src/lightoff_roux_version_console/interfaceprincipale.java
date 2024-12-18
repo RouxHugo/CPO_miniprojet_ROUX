@@ -18,24 +18,24 @@ import javax.swing.SwingConstants;
 public class interfaceprincipale extends javax.swing.JFrame {
     GrilleDeCellules grille;
     int Nbcoups = 0;
-
+int Nbligne ;
+        
 
     /**
      * Creates new form interfaceprincipale
      */
-    public interfaceprincipale() {
-        
+    public interfaceprincipale(int nb) {
+        Nbligne = nb;
         initComponents();
         
-        int Nbligne = 7;
-        int Nbcolonne = 7;
+        int Nbcolonne = Nbligne;
         this.grille = new GrilleDeCellules(Nbligne,Nbcolonne);
         initialiserPartie();
         
         jLabel1.setText("Nombre de coups : "+Nbcoups);
         repaint();
         
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < Nbligne; i++) {
             JButton button = new JButton("");
             jPanel1.add(button);
 
@@ -53,7 +53,7 @@ public class interfaceprincipale extends javax.swing.JFrame {
             });
         }
 
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < Nbcolonne; j++) {
             JButton button = new JButton("");
             jPanel5.add(button);
 
@@ -72,8 +72,8 @@ public class interfaceprincipale extends javax.swing.JFrame {
             
         }
 
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < Nbligne; i++) {
+            for (int j = 0; j < Nbcolonne; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique( grille.grille[i][j], 36,36);
                 jPanel6.add(bouton_cellule);
 
@@ -152,7 +152,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
 
         jPanel5.setLayout(new java.awt.GridLayout(0, 1));
 
-        jPanel6.setLayout(new java.awt.GridLayout(7, 7));
+        jPanel6.setLayout(new java.awt.GridLayout(Nbligne, Nbligne));
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -293,7 +293,7 @@ jLabel1.setText("Nombre de coups : "+Nbcoups);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfaceprincipale().setVisible(true);
+                new interfaceprincipale(7).setVisible(true);
             }
         });
     }
